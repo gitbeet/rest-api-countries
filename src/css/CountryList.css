@@ -1,0 +1,13 @@
+.country-list{
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+@media (min-width:1440px){
+    .country-list{
+        padding-inline: var(--padding-global-horizontal);
+    }
+}

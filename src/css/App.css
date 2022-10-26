@@ -1,0 +1,104 @@
+*{
+  box-sizing: border-box;
+  font-family: 'Nunito Sans', sans-serif;
+}
+
+
+
+:root{
+  --clr-dark-blue: hsl(209, 23%, 22%);
+  --clr-very-dark-blue: hsl(207, 26%, 17%);
+  --clr-super-dark-blue: hsl(200, 15%, 8%);
+  --clr-dark-gray: hsl(0, 0%, 52%);
+  --clr-very-light-gray:hsl(0, 0%, 98%);
+  --clr-white: hsl(0, 0%, 100%);
+
+  --border-radius-mobile : 5px;
+  --padding-global-horizontal: 80px;
+}
+
+.box-shadow{
+  box-shadow: 0 0 7px 2px rgba(0,0,0,.15);
+}
+
+body{
+  margin:0 auto;
+  color: var(--clr-super-dark-blue);
+}
+
+button{
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  padding: 10px 30px;
+  border-radius: 5px;
+}
+
+h1,h2,h3,h4,h5{
+  margin:0
+}
+
+img{
+  max-width: 100%;
+}
+
+
+.text-thin{
+  font-weight: 300;
+}
+
+.text-semi-bold{
+  font-weight: 600;
+}
+
+.text-bold{
+  font-weight: 800;
+}
+
+.text-sm{
+  font-size: 14px;
+}
+
+.text-md{
+  font-size: 16px;
+}
+
+.color-super-dark{
+  color:var(--clr-super-dark-blue)
+}
+
+.color-very-dark{
+  color:var(--clr-very-dark-blue)
+}
+
+.color-dark{
+  color:var(--clr-dark-blue)
+}
+
+.color-gray{
+  color:var(--clr-dark-gray)
+}
+
+.color-light{
+  color:var(--clr-very-light-gray)
+}
+
+.color-white{
+  color: var(--clr-white);
+}
+
+.bg-very-dark{
+  background-color: var(--clr-very-dark-blue);
+}
+
+.bg-dark{
+  background-color: var(--clr-dark-blue) ;
+}
+
+.bg-light{
+  background-color: var(--clr-very-light-gray);
+}
+
+
+
+
