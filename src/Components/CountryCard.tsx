@@ -2,7 +2,7 @@ import "../css/CountryCard.css";
 import { Country } from "./App";
 interface Props {
   country: Country;
-  selectCountry: (val: any) => void;
+  selectCountry: (val: string) => void;
   darkMode: boolean;
 }
 
@@ -22,14 +22,14 @@ const CountryCard = ({
       <div>
         <img
           className="country-card-flag"
-          onClick={() => selectCountry(country)}
+          onClick={() => selectCountry(country.name.common)}
           src={country.flags.png}
           alt="flag"
         />
       </div>
       <div className="country-card-text">
         <h1
-          onClick={() => selectCountry(country)}
+          onClick={() => selectCountry(country.name.common)}
           className="country-card-name"
         >
           {country.name.common}

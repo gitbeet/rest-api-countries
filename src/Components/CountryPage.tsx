@@ -3,9 +3,9 @@ import { BiArrowBack } from "react-icons/bi";
 import { Country } from "./App";
 
 interface Props {
-  country: Country;
-  selectCountry: (val: Country | null) => void;
-  countries: Country[];
+  country: string;
+  selectCountry: (val: string | null) => void;
+  countries: Country[] | null;
   darkMode: boolean;
   goToCountry: (val: string | null) => void;
 }
@@ -17,11 +17,15 @@ const CountryPage = ({
   darkMode,
   goToCountry,
 }: Props): JSX.Element => {
+  const selectedCountry: Country | null =
+    countries?.find?.((cou: Country) => cou?.name?.common === country) || null;
+  console.log(country);
+  if (!selectedCountry || !countries) return <h1>loading</h1>;
+
   const { flags, name, region, subregion, tld, currencies, languages } =
-    country;
+    selectedCountry;
 
   const nativeName = Object.values(Object.values(name)[2])[0]["official"];
-  if (!countries) return <h1>loading</h1>;
   return (
     <div
       className={`${darkMode ? "country-page color-light" : "country-page"}`}
@@ -49,7 +53,7 @@ const CountryPage = ({
             </p>
             <p>
               <span className="text-bold">Population: </span>
-              <span>{country.population.toLocaleString()}</span>
+              <span>{selectedCountry?.population.toLocaleString()}</span>
             </p>
             <p>
               <span className="text-bold">Region: </span>
@@ -62,7 +66,8 @@ const CountryPage = ({
             <p>
               <span className="text-bold">Capital: </span>
               <span>
-                {(country.capital && country.capital[0]) || "Not available"}
+                {(selectedCountry?.capital && selectedCountry?.capital[0]) ||
+                  "Not available"}
               </span>
             </p>
           </div>
@@ -104,8 +109,8 @@ const CountryPage = ({
         <div className="border-countries-wrapper">
           <p className="text-bold">Border Countries</p>
           <div className="border-countries">
-            {country.borders &&
-              country.borders.map((border) => {
+            {selectedCountry?.borders &&
+              selectedCountry?.borders.map((border, index) => {
                 const countryToGoTo =
                   countries?.find?.(
                     (country) =>
@@ -115,6 +120,7 @@ const CountryPage = ({
                   )?.name?.common || null;
                 return (
                   <button
+                    key={index}
                     onClick={() => goToCountry(countryToGoTo)}
                     className={`${
                       darkMode

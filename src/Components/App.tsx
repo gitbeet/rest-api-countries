@@ -39,7 +39,7 @@ const App = (): JSX.Element => {
 
   const [darkMode, setDarkMode] = useState<boolean>(false);
 
-  const [activeCountry, setActiveCountry] = useState<Country | null>(null);
+  const [activeCountry, setActiveCountry] = useState<string | null>(null);
 
   const [countries, setCountries] = useState<Country[] | null>(null);
   const [displayCountries, setDisplayCountries] = useState<Country[] | null>(
@@ -85,7 +85,7 @@ const App = (): JSX.Element => {
     setDisplayCountries(tempCountries);
   }, [searchQuery, countries]);
 
-  function selectCountry(country: Country | null): void {
+  function selectCountry(country: string | null): void {
     setActiveCountry(country);
   }
 
@@ -102,9 +102,7 @@ const App = (): JSX.Element => {
   }
 
   function goToCountry(country: string | null): void {
-    const activeCountry =
-      countries?.find((cou: Country) => cou?.name?.common === country) || null;
-    setActiveCountry(activeCountry);
+    setActiveCountry(country);
   }
 
   if (!countries || !displayCountries) return <Loading />;
