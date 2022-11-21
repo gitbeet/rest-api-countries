@@ -1,14 +1,34 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import "../css/App.css";
 import CountryList from "./CountryList";
 import Header from "./Header";
 import CountryPage from "./CountryPage";
 import SearchCountry from "./SearchCountry";
 import Loading from "./Loading";
+import "../css/App.css";
 
-function App() {
-  const regionList = [
+export interface Country {
+  name: {
+    common: string;
+    official: string;
+    nativeName: { ara: { official: string; common: string } };
+  };
+  flags: { png: string; svg: string };
+  population: number;
+  region: string;
+  capital: string[];
+  subregion: string;
+  tld: string[];
+  currencies: { [val: string]: { name: string; symbol: string } };
+  borders: string[];
+  fifa: string;
+  cca3: string;
+  cioc: string;
+  languages: { [val: string]: string };
+}
+
+const App = (): JSX.Element => {
+  const regionList: string[] = [
     "All Regions",
     "Africa",
     "Americas",
@@ -17,22 +37,21 @@ function App() {
     "Oceania",
   ];
 
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState<boolean>(false);
 
-  const [activeCountry, setActiveCountry] = useState();
+  const [activeCountry, setActiveCountry] = useState<Country | null>(null);
 
-  const [countries, setCountries] = useState();
-  const [displayCountries, setDisplayCountries] = useState(countries);
+  const [countries, setCountries] = useState<Country[] | null>(null);
+  const [displayCountries, setDisplayCountries] = useState<Country[] | null>(
+    countries
+  );
 
-  const [regionCountries, setRegionCountries] = useState();
+  const [region, setRegion] = useState<string>("europe");
+  const [searchQuery, setSearchQuery] = useState<string>("");
 
-  const [region, setRegion] = useState("europe");
-  const [searchQuery, setSearchQuery] = useState("");
+  const [error, setError] = useState<string>("");
 
-  const [error, setError] = useState("");
-
-  document.querySelector("body").classList.toggle("bg-very-dark", darkMode);
-
+  document?.querySelector("body")?.classList.toggle("bg-very-dark", darkMode);
   useEffect(() => {
     if (region === "All Regions") {
       setDisplayCountries(countries);
@@ -60,36 +79,38 @@ function App() {
 
   useEffect(() => {
     if (!countries) return;
-    let tempCountries = [...countries].filter((country) =>
+    const tempCountries = [...countries].filter((country) =>
       country.name.common.toLowerCase().includes(searchQuery.toLowerCase())
     );
     setDisplayCountries(tempCountries);
   }, [searchQuery, countries]);
 
-  function selectCountry(country) {
+  function selectCountry(country: Country | null): void {
     setActiveCountry(country);
   }
 
-  function toggleMode() {
+  function toggleMode(): void {
     setDarkMode((prev) => !prev);
   }
 
-  function handleRegion(region) {
+  function handleRegion(region: string): void {
     setRegion(region);
   }
 
-  function handleSearchQuery(searchQuery) {
+  function handleSearchQuery(searchQuery: string): void {
     setSearchQuery(searchQuery);
   }
 
-  function goToCountry(country) {
-    console.log(country);
-    setActiveCountry(countries.find((cou) => cou.name.common === country));
+  function goToCountry(country: string | null): void {
+    const activeCountry =
+      countries?.find((cou: Country) => cou?.name?.common === country) || null;
+    setActiveCountry(activeCountry);
   }
 
   if (!countries || !displayCountries) return <Loading />;
   return (
     <div className="container">
+      <p>{error}</p>
       <Header toggleMode={toggleMode} darkMode={darkMode} />
       {!activeCountry && (
         <>
@@ -122,6 +143,6 @@ function App() {
       )}
     </div>
   );
-}
+};
 
 export default App;

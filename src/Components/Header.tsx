@@ -1,8 +1,12 @@
-import React from "react";
 import "../css/Header.css";
 import { FaRegMoon } from "react-icons/fa";
 
-function Header({ toggleMode, darkMode }) {
+interface Props {
+  toggleMode: () => void;
+  darkMode: boolean;
+}
+
+const Header = ({ toggleMode, darkMode }: Props): JSX.Element => {
   return (
     <div
       className={`${
@@ -16,6 +20,6 @@ function Header({ toggleMode, darkMode }) {
       </p>
     </div>
   );
-}
+};
 
 export default Header;

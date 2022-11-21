@@ -1,6 +1,16 @@
-import React from "react";
 import "../css/CountryCard.css";
-function CountryCard({ country, selectCountry, darkMode }) {
+import { Country } from "./App";
+interface Props {
+  country: Country;
+  selectCountry: (val: any) => void;
+  darkMode: boolean;
+}
+
+const CountryCard = ({
+  country,
+  selectCountry,
+  darkMode,
+}: Props): JSX.Element => {
   return (
     <div
       className={`${
@@ -39,6 +49,6 @@ function CountryCard({ country, selectCountry, darkMode }) {
       </div>
     </div>
   );
-}
+};
 
 export default CountryCard;

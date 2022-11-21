@@ -1,15 +1,23 @@
-import React from "react";
 import "../css/SearchCountry.css";
 import { FaSearch } from "react-icons/fa";
 
-export default function SearchCountry({
+interface Props {
+  searchQuery: string;
+  region: string;
+  handleSearchQuery: (val: string) => void;
+  handleRegion: (val: string) => void;
+  regionList: string[];
+  darkMode: boolean;
+}
+
+const SearchCountry = ({
   searchQuery,
   region,
   handleSearchQuery,
   handleRegion,
   regionList,
   darkMode,
-}) {
+}: Props): JSX.Element => {
   return (
     <div className="search-country">
       <div
@@ -34,10 +42,12 @@ export default function SearchCountry({
         value={region}
         onChange={(e) => handleRegion(e.target.value)}
       >
-        {regionList.map((region) => (
-          <option>{region}</option>
+        {regionList.map((region, index) => (
+          <option key={index}>{region}</option>
         ))}
       </select>
     </div>
   );
-}
+};
+
+export default SearchCountry;

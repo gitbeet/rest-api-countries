@@ -1,17 +1,26 @@
-import React from "react";
 import "../css/CountryPage.css";
 import { BiArrowBack } from "react-icons/bi";
+import { Country } from "./App";
 
-function CountryPage({
+interface Props {
+  country: Country;
+  selectCountry: (val: Country | null) => void;
+  countries: Country[];
+  darkMode: boolean;
+  goToCountry: (val: string | null) => void;
+}
+
+const CountryPage = ({
   country,
   selectCountry,
   countries,
   darkMode,
   goToCountry,
-}) {
+}: Props): JSX.Element => {
   const { flags, name, region, subregion, tld, currencies, languages } =
     country;
 
+  const nativeName = Object.values(Object.values(name)[2])[0]["official"];
   if (!countries) return <h1>loading</h1>;
   return (
     <div
@@ -24,7 +33,7 @@ function CountryPage({
               ? "go-back-button color-light bg-dark box-shadow"
               : "go-back-button bg-light box-shadow"
           }`}
-          onClick={() => selectCountry("")}
+          onClick={() => selectCountry(null)}
         >
           <BiArrowBack /> Go back
         </button>
@@ -36,9 +45,7 @@ function CountryPage({
           <div className="country-text-top">
             <p>
               <span className="text-bold">Native name: </span>
-              <span>
-                {Object.values(Object.values(name)[2])[0]["official"]}
-              </span>
+              <span>{nativeName}</span>
             </p>
             <p>
               <span className="text-bold">Population: </span>
@@ -85,9 +92,9 @@ function CountryPage({
               <span>
                 {Object.entries(languages).map((entry, index) => {
                   return index === Object.entries(languages).length - 1 ? (
-                    <span>{` ${entry[1]}`}</span>
+                    <span key={index}>{` ${entry[1]}`}</span>
                   ) : (
-                    <span>{`${entry[1]}, `}</span>
+                    <span key={index}>{`${entry[1]}, `}</span>
                   );
                 })}
               </span>
@@ -99,18 +106,16 @@ function CountryPage({
           <div className="border-countries">
             {country.borders &&
               country.borders.map((border) => {
+                const countryToGoTo =
+                  countries?.find?.(
+                    (country) =>
+                      country?.fifa === border ||
+                      country?.cca3 === border ||
+                      country?.cioc === border
+                  )?.name?.common || null;
                 return (
                   <button
-                    onClick={() =>
-                      goToCountry(
-                        countries.find(
-                          (country) =>
-                            country.fifa === border ||
-                            country.cca3 === border ||
-                            country.cioc === border
-                        )?.name.common
-                      )
-                    }
+                    onClick={() => goToCountry(countryToGoTo)}
                     className={`${
                       darkMode
                         ? "color-light bg-dark box-shadow"
@@ -133,6 +138,6 @@ function CountryPage({
       </div>
     </div>
   );
-}
+};
 
 export default CountryPage;

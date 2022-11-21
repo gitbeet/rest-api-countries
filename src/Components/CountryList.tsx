@@ -1,12 +1,23 @@
-import React from "react";
 import CountryCard from "./CountryCard";
 import "../css/CountryList.css";
+import { Country } from "./App";
 
-function CountryList({ countries, selectCountry, darkMode }) {
+interface Props {
+  countries: Country[];
+  selectCountry: (val: any) => void;
+  darkMode: boolean;
+}
+
+const CountryList = ({
+  countries,
+  selectCountry,
+  darkMode,
+}: Props): JSX.Element => {
   return (
     <div className="country-list">
-      {countries.map((country) => (
+      {countries.map((country, index) => (
         <CountryCard
+          key={index}
           country={country}
           selectCountry={selectCountry}
           darkMode={darkMode}
@@ -14,6 +25,6 @@ function CountryList({ countries, selectCountry, darkMode }) {
       ))}
     </div>
   );
-}
+};
 
 export default CountryList;

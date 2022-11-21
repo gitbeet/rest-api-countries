@@ -1,8 +1,7 @@
-import React from "react";
 import "../css/Loading.css";
 import { PulseLoader } from "react-spinners";
 
-export default function Loading() {
+const Loading = (): JSX.Element => {
   return (
     <div className="loading">
       <div className="loader">
@@ -10,4 +9,6 @@ export default function Loading() {
       </div>
     </div>
   );
-}
+};
+
+export default Loading;
