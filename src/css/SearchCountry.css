@@ -1,58 +1,78 @@
-.search-country{
-    margin: 10px 20px;
-    margin-top: 30px;
+.search-country {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 10px 20px;
+  margin-top: 30px;
 }
 
-input{
+input {
+  width: 100%;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  transition: 0.1s ease-in-out;
+}
+
+input:focus {
+  outline: none;
+}
+
+input:hover {
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 15px 25px;
+  border-radius: var(--border-radius-mobile);
+}
+
+.select-region-chevron {
+  color: white;
+  position: absolute;
+  top: 50%;
+  left: 80%;
+  transform: translate(-50%, -50%);
+}
+
+.select-region-container {
+  width: fit-content;
+  position: relative;
+}
+
+.select-region {
+  appearance: none;
+  border: none;
+  border-radius: var(--border-radius-mobile);
+  padding: 16px;
+  padding-right: 48px;
+}
+
+.select-region-icon {
+  width: 12px;
+  height: 12px;
+}
+
+@media (min-width: 1440px) {
+  select {
+    margin: 0;
+  }
+
+  .search-bar {
+    width: 40%;
+  }
+
+  input {
     width: 100%;
-    border: 1px solid transparent;  
-    border-radius: 4px;
-    transition: .1s ease-in-out;  
-}
+  }
 
-input:focus{
-    outline: none;
-}
-
-input:hover{
-}
-
-.search-bar{
+  .search-country {
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    gap: 20px;
-    padding: 15px 25px;
-    border-radius: var(--border-radius-mobile);
-}
-
-select{    
-    border: none;
-    border-radius: var(--border-radius-mobile);
-    padding: 15px 0px;
-    padding-right: 65px;
-    margin-top: 40px;
-}
-
-@media (min-width:1440px){
-    
-    select{
-        margin: 0;
-    }
-
-    .search-bar{
-        width: 40%;
-    }
-
-    input{
-        width: 100%;
-    }
-
-    .search-country{
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 50px 0;  
-        padding-inline: var(--padding-global-horizontal);  
-        margin-inline:0;
-    }
+    padding: 50px 0;
+    padding-inline: var(--padding-global-horizontal);
+    margin-inline: 0;
+  }
 }
