@@ -38,7 +38,11 @@ const SearchCountry = ({
         />
       </div>
       <div className="select-region-container">
-        <div className="select-region-chevron">
+        <div
+          className={` ${
+            darkMode ? "color-light" : "color-super-dark "
+          } select-region-chevron`}
+        >
           {isOpen ? (
             <FaChevronUp className="select-region-icon" />
           ) : (
