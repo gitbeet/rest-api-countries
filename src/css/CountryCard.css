@@ -9,11 +9,6 @@
   overflow: hidden;
 }
 
-.country-card:hover {
-  transform: translatey(-20px);
-  box-shadow: 0 15px 25px 2px rgba(0, 0, 0, 0.2);
-}
-
 .country-card-text {
   padding: 20px;
 }
@@ -43,5 +38,10 @@
   .country-card {
     width: 295px;
     margin-inline: 0;
+  }
+
+  .country-card:hover {
+    transform: translatey(-20px);
+    box-shadow: 0 15px 25px 2px rgba(0, 0, 0, 0.2);
   }
 }

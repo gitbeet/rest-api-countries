@@ -11,38 +11,33 @@
 
 .dark-mode-container-left {
   background-color: var(--clr-medium-blue);
-  justify-content: flex-start;
 }
 
 .dark-mode-container-right {
   background-color: var(--clr-light-gray);
-  justify-content: flex-end;
 }
 
 .dark-mode-circle {
   position: absolute;
-  /* margin-inline: 2px; */
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 38px;
-  height: 38px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
 }
 
 .dark-mode-circle-left {
-  transition: all 0.2s ease-in-out;
-  /* color: var(--clr-medium-blue); */
+  margin-left: 2px;
+  transition: transform 0.2s ease-in-out;
   background-color: var(--clr-dark-blue);
-  left: 2px;
 }
 
 .dark-mode-circle-right {
-  transition: all 0.2s ease-in-out;
+  transition: transform 0.2s ease-in-out;
   color: var(--clr-dark-blue);
   background-color: var(--clr-very-light-gray);
-  left: 100%;
-  transform: translateX(calc(-100% - 2px));
+  transform: translateX(41px);
 }
 
 .dark-mode-icon {

@@ -1,6 +1,15 @@
 * {
   box-sizing: border-box;
   font-family: "Nunito Sans", sans-serif;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+input,
+textarea,
+button,
+select,
+a {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 :root {

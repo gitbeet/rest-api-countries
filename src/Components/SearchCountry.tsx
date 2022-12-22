@@ -1,6 +1,6 @@
 import "../css/SearchCountry.css";
-import { FaSearch, FaChevronUp, FaChevronDown } from "react-icons/fa";
-import { useState } from "react";
+import { FaSearch } from "react-icons/fa";
+import DropDownMenu from "./DropDownMenu";
 
 interface Props {
   searchQuery: string;
@@ -19,7 +19,6 @@ const SearchCountry = ({
   regionList,
   darkMode,
 }: Props): JSX.Element => {
-  const [isOpen, setIsOpen] = useState<boolean>(false);
   return (
     <div className="search-country">
       <div
@@ -37,34 +36,12 @@ const SearchCountry = ({
           placeholder="Search for a country..."
         />
       </div>
-      <div className="select-region-container">
-        <div
-          className={` ${
-            darkMode ? "color-light" : "color-super-dark "
-          } select-region-chevron`}
-        >
-          {isOpen ? (
-            <FaChevronUp className="select-region-icon" />
-          ) : (
-            <FaChevronDown className="select-region-icon" />
-          )}
-        </div>
-        <select
-          onClick={() => setIsOpen((prev) => !prev)}
-          onBlur={() => setIsOpen(false)}
-          className={`${
-            darkMode
-              ? "color-white bg-dark box-shadow "
-              : "bg-light box-shadow "
-          } select-region`}
-          value={region}
-          onChange={(e) => handleRegion(e.target.value)}
-        >
-          {regionList.map((region, index) => (
-            <option key={index}>{region}</option>
-          ))}
-        </select>
-      </div>
+      <DropDownMenu
+        darkMode={darkMode}
+        handleRegion={handleRegion}
+        regionList={regionList}
+        region={region}
+      />
     </div>
   );
 };
