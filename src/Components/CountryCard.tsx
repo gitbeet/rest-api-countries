@@ -16,7 +16,7 @@ const CountryCard = ({
       className={`${
         darkMode
           ? "country-card bg-dark color-light box-shadow"
-          : "country-card bg-light box-shadow"
+          : "country-card bg-white box-shadow"
       }`}
     >
       <div>

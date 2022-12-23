@@ -1,13 +1,17 @@
-.country-list{
-    display: flex;
-    justify-content: space-between;
-    align-items: stretch;
-    flex-wrap: wrap;
-    gap: 30px;
+.country-list {
+  margin-top: 64px;
+  padding-inline: 32px;
+
+  min-width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  flex-wrap: wrap;
+  gap: 32px;
 }
 
-@media (min-width:1440px){
-    .country-list{
-        padding-inline: var(--padding-global-horizontal);
-    }
+@media (min-width: 1440px) {
+  .country-list {
+    padding-inline: 96px;
+  }
 }

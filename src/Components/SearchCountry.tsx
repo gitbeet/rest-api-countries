@@ -24,16 +24,16 @@ const SearchCountry = ({
       <div
         className={`${
           darkMode
-            ? "search-bar  color-white bg-dark box-shadow placeholder-white"
-            : "search-bar box-shadow color-gray placeholder-gray"
+            ? "search-bar  box-shadow color-white bg-dark placeholder-white"
+            : "search-bar box-shadow color-gray bg-white  placeholder-gray"
         }`}
       >
-        <FaSearch />
+        <FaSearch className="search-bar-search-icon" />
         <input
           className={`${darkMode ? "color-white bg-dark" : ""}`}
           value={searchQuery}
           onChange={(e) => handleSearchQuery(e.target.value)}
-          placeholder="Search for a country..."
+          placeholder="Look up a country..."
         />
       </div>
       <DropDownMenu

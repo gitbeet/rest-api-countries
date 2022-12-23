@@ -46,7 +46,7 @@ const App = (): JSX.Element => {
     countries
   );
 
-  const [region, setRegion] = useState<string>("europe");
+  const [region, setRegion] = useState<string>("All Regions");
   const [searchQuery, setSearchQuery] = useState<string>("");
 
   const [error, setError] = useState<string>("");
@@ -107,7 +107,7 @@ const App = (): JSX.Element => {
 
   if (!countries || !displayCountries) return <Loading />;
   return (
-    <div className="container">
+    <div className={`container ${darkMode ? "bg-very-dark" : "bg-light"}`}>
       <p>{error}</p>
       <Header toggleMode={toggleMode} darkMode={darkMode} />
       {!activeCountry && (

@@ -2,7 +2,6 @@
   width: 320px;
   display: flex;
   flex-direction: column;
-  margin: 10px 20px;
   border-radius: 7px;
   transform: translateY(0);
   transition: 0.2s ease-in-out;
@@ -10,7 +9,7 @@
 }
 
 .country-card-text {
-  padding: 20px;
+  padding: 32px;
 }
 
 .country-card-name {
@@ -41,7 +40,8 @@
   }
 
   .country-card:hover {
-    transform: translatey(-20px);
+    transform: scale(1.05);
+    transform-origin: bottom;
     box-shadow: 0 15px 25px 2px rgba(0, 0, 0, 0.2);
   }
 }

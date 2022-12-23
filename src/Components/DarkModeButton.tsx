@@ -6,7 +6,7 @@ interface Props {
   toggleMode: () => void;
 }
 
-const DarkModeButton = ({ darkMode, toggleMode }: Props) => {
+const DarkModeButton = ({ darkMode, toggleMode }: Props): JSX.Element => {
   return (
     <div
       onClick={toggleMode}

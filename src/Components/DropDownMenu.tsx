@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { FaChevronUp, FaChevronDown } from "react-icons/fa";
+import { FaChevronDown } from "react-icons/fa";
 import "../css/DropDownMenu.css";
 import Backdrop from "./Backdrop";
 
@@ -15,13 +15,13 @@ const DropDownMenu = ({
   handleRegion,
   regionList,
   region,
-}: Props) => {
+}: Props): JSX.Element => {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <>
       <div
         className={`${
-          darkMode ? "color-white bg-dark box-shadow " : "bg-light box-shadow "
+          darkMode ? "color-white bg-dark box-shadow " : "bg-white box-shadow "
         } select-region`}
       >
         <div
@@ -32,13 +32,13 @@ const DropDownMenu = ({
           <div
             className={` ${
               darkMode ? "color-light" : "color-super-dark "
-            } select-region-chevron`}
+            } select-region-chevron ${
+              isOpen
+                ? "select-region-chevron-open"
+                : "select-region-chevron-closed"
+            }`}
           >
-            {isOpen ? (
-              <FaChevronUp className="select-region-icon" />
-            ) : (
-              <FaChevronDown className="select-region-icon" />
-            )}
+            <FaChevronDown className="select-region-icon" />
           </div>
         </div>
 
@@ -54,8 +54,8 @@ const DropDownMenu = ({
               <div
                 className={`${
                   darkMode
-                    ? "select-region-option-dark"
-                    : "select-region-option-light"
+                    ? "select-region-option-dark "
+                    : "select-region-option-light bg-white"
                 } select-region-option`}
                 onClick={() => {
                   setIsOpen(false);

@@ -1,0 +1,29 @@
+.button-component {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  width: max-content;
+  padding: 16px 24px;
+  border-radius: var(--border-radius-mobile);
+}
+
+.button-component-dark,
+.button-component-light {
+  transition: background-color 0.2s ease-in-out;
+  transition: color 0.2s ease-in-out;
+}
+
+.button-component-dark:hover {
+  background-color: var(--clr-medium-dark-blue);
+}
+
+.button-component-light:hover {
+  color: var(--clr-dark-gray);
+}
+
+@media (hover: none) {
+  .button-component:hover {
+    cursor: pointer;
+  }
+}

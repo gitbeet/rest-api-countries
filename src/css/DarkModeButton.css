@@ -29,18 +29,42 @@
 
 .dark-mode-circle-left {
   margin-left: 2px;
-  transition: transform 0.2s ease-in-out;
   background-color: var(--clr-dark-blue);
+  animation: goLeft 0.3s ease-in-out forwards;
 }
 
 .dark-mode-circle-right {
-  transition: transform 0.2s ease-in-out;
   color: var(--clr-dark-blue);
-  background-color: var(--clr-very-light-gray);
+  background-color: var(--clr-white);
   transform: translateX(41px);
+  animation: goRight 0.3s ease-in-out forwards;
 }
 
 .dark-mode-icon {
   width: 24px;
   height: 24px;
+}
+
+@keyframes goRight {
+  0% {
+    transform: translateX(0);
+  }
+  80% {
+    transform: translateX(43px);
+  }
+  100% {
+    transform: translateX(41px);
+  }
+}
+
+@keyframes goLeft {
+  0% {
+    transform: translateX(41px);
+  }
+  80% {
+    transform: translateX(-2px);
+  }
+  100% {
+    transform: translateX(0);
+  }
 }

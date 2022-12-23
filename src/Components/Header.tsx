@@ -1,6 +1,6 @@
 import "../css/Header.css";
 import DarkModeButton from "./DarkModeButton";
-// import { FaRegMoon } from "react-icons/fa";
+import { FaGlobeAmericas } from "react-icons/fa";
 
 interface Props {
   toggleMode: () => void;
@@ -11,15 +11,20 @@ const Header = ({ toggleMode, darkMode }: Props): JSX.Element => {
   return (
     <div
       className={`${
-        darkMode ? "header box-shadow color-white bg-dark" : "header box-shadow"
+        darkMode
+          ? "header box-shadow color-white bg-dark"
+          : "header color-very-dark bg-white box-shadow"
       }`}
     >
-      <h1 className="text-md">Where in the world?</h1>
+      <h1 className="text-lg text-bold">
+        <span className="logo-small">Country </span>
+        <span>
+          Inf
+          <span className="text-md"></span>
+          <FaGlobeAmericas className="logo-icon" />
+        </span>
+      </h1>
       <DarkModeButton toggleMode={toggleMode} darkMode={darkMode} />
-      {/* <p className="dark-mode text-md" onClick={toggleMode}>
-        <FaRegMoon />
-        Dark Mode
-      </p> */}
     </div>
   );
 };
